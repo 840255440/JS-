@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body class="back">
+    <div id="header" class="clearfix">
+        <a href="" id="title">装扮</a>
+        <p id="title-Img"></p>
+    </div>
+    <script>
+        var oHeader = document.getElementById("header");
+        var oA = document.getElementById("title");
+        var otitle = document.getElementById("title-Img");
+        oHeader.onmouseenter = function () {
+            oA.style.background = "white";
+            oA.style.color = "#000";
+            otitle.style.display = "block";
+
+        }
+        oHeader.onmouseleave = function () {
+            oA.style.background = "green";
+            oA.style.color = "#fff";
+            otitle.style.display = "none";
+        }
+    </script>
+</body>
+</html>

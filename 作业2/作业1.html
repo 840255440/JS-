@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/base1.css">
+</head>
+<body>
+<div><img src="images/1.jpg" alt="" id="img" onclick="change()"></div>
+<script>
+function change() {
+    oImg = document.getElementById("img");
+    if(oImg.src.match("1"))
+    {
+        oImg.src = "images/2.png";
+    }else
+    {
+        oImg.src = "images/1.jpg"
+    }
+}
+</script>
+</body>
+</html>

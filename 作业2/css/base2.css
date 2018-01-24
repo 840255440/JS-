@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.hrader{
+    position: relative;
+    top: 20px;
+    left: 100px;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+}
+.hrader button{
+    top: 50px;
+    float: left;
+    width: 100px;
+    height: 30px;
+    margin-right: 50px;
+    background: cornflowerblue;
+}
+.hrader button{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 30px;
+}
+.text {
+    position: relative;
+    width: 500px;
+    height: 1000px;
+
+}
+.text #box{
+    font-size: 12px;
+}
