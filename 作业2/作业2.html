@@ -22,8 +22,10 @@
     var min=10;
     var max=18;
 	large();
+
 function large() {
     var oBox = document.getElementById("box");
+     console.log(getComputedStyle(oBox,null)['fontSize']);
     var size = parseInt(getStyle(oBox,"fontSize").replace("px",""));
         console.log("size"+size);
         if(size == max)

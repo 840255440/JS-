@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/base.css">
+    <!--<script src="js/base.js"></script>-->
+</head>
+<body>
+<div class="main">
+    <div class="box">
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+        <div class="pic" >
+            <img src="images/g1.png" alt="" class="on" id="img1">
+            <img src="images/g2.png" alt="" id="img2">
+        </div>
+            <p class="btn" id="btn">发表</p>
+        <ul id="article" style="margin-top: 50px"></ul>
+    </div>
+</div>
+<script>
+    var oBox = document.getElementsByTagName("box");
+    var oImg1 = document.getElementById("img1"); //获取第一张图片
+    var oImg2 = document.getElementById("img2");//获取第二张图片
+    var oText = document.getElementById("text");//获取textarea里面的内容
+    var oBtn = document.getElementById("btn");//获取按钮
+    var oArticle = document.getElementById("article");//获取ul，一会我们会在ul里面动态的添加内容
+    var imgSrc = oImg1.src; //将此时的li里面的img的src存在imgSrc里面
+
+     oImg1.onclick = function () {
+         console.log("111");
+         this.classList.remove("on");
+         oImg2.classList.add("on");
+         imgSrc = oImg2.src;
+     };
+     oImg2.onclick = function () {
+         this.classList.remove("on");
+         oImg1.classList.add("on");
+         imgSrc = oImg1.src;
+     };
+     
+     oBtn.onclick = function () {
+         if(oText.value){
+             oArticle.innerHTML += "<li><img src='"+imgSrc+"' alt=''><span>"+oText.value+"</span></li>";
+         }
+         oText.value = "";
+     };
+
+</script>
+</body>
+</html>
