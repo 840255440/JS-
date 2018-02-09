@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body,dl,dd,dt,p,h1,h2,h3,h4,h5,h6{ margin: 0;}
+        ul,ol{margin: 0; list-style: none; padding: 0;}
+        a{ text-decoration: none; color:inherit; }
+        *{ margin: 0; padding: 0; }
+        a img{ display:block; border:none;}
+        .clearfix:after{ content:""; display: block; clear: both;}
+        .fl-l{ float: left;}
+        .fl-r{ float: right;}
+        .box{
+            position: relative;
+            width: 800px;
+            height: 450px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px 0 #000;
+        }
+        .box .pic ul li{
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*display: none;*/
+            opacity: 0;
+            transition: 1s;
+        }
+        .box .pic ul li.on{
+            /*display: block;*/
+            opacity: 1;
+        }
+        .box .btn p{
+            position: absolute;
+            top: calc(50% - 27px);
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+        }
+        .box .btn p:hover{
+            opacity: 0.5;
+        }
+        .box .btn p:nth-child(1){
+            left: 0;
+            background: url("../img/btnL.png");
+        }
+        .box .btn p:nth-child(2){
+            right: 0;
+            background: url("../img/btnR.png");
+        }
+        .box .dot{
+            position: absolute;
+            bottom: 10px;
+            left: calc(50% - 100px);
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            height: 30px;
+        }
+        .box .dot li{
+            height: 30px;
+            width: 30px;
+            background: #ccc;
+            border-radius: 50%;
+            font: 20px/30px "";
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+        .box .dot li.active{
+            background: orangered;
+        }
+        </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic">
+            <ul>
+                <li class="on"><a href=""><img src="../img/0.jpg" alt=""></a></li>
+                <li><a href=""><img src="../img/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="../img/2.jpg" alt=""></a></li>
+                <li><a href=""><img src="../img/3.jpg" alt=""></a></li>
+                <li><a href=""><img src="../img/4.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <p></p>
+            <p></p>
+        </div>
+        <ol class="dot">
+            <li class="active">0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ol>
+    </div>
+
+    <script>
+        var aBtn = document.querySelectorAll(".btn p");
+        var aLi = document.querySelectorAll(".pic li");
+        var length = aLi.length;
+
+        var aDot = document.querySelectorAll(".dot li");
+
+        var idx = 0; //要知道播放到哪一张图片了   我就需要一个index索引去控制
+        for( var i=0; i<2; i++ ){
+            //给右按钮添加点击事件
+            if(i){
+                aBtn[i].onclick = function () {
+                    aLi[idx].className = "";
+                    idx++;
+                    if(idx > length-1)idx=0;
+                    aLi[idx].className = "on";
+                    change();
+                }
+            }else{
+                //给左按钮添加点击事件
+                aBtn[i].onclick = function () {
+                    aLi[idx].className = "";
+                    idx--;
+                    if(idx < 0)idx=length-1;
+                    aLi[idx].className = "on";
+                    change();
+                }
+            }
+        }
+        //给小圆点添加点击事件
+        for( var i=0; i<length; i++ ){
+            aDot[i].index = i;
+            aDot[i].onclick = function () {
+                //先把前一次的清空；再把当前的序号更新；最后为当前序号添加active
+                aLi[idx].className = "";
+                idx = this.index;
+                aLi[idx].className = "on";
+                change();
+            }
+        }
+
+
+
+
+        //自定义一个change函数 改变小圆点的active
+        function change() {
+            for( var i=0; i<length; i++ ){
+                aDot[i].className = "";
+            }
+            aDot[idx].className = "active";
+        }
+    </script>
+</body>
+</html>

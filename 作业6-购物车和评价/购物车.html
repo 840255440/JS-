@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 1000px;
+            margin: 100px auto;
+        }
+        .main ul {
+            display: flex;
+            list-style-type: none;
+            border: 1px solid #990000;
+            border-bottom: none;
+        }
+        .main li{
+            flex: 1;
+            height: 100px;
+            line-height: 100px;
+            border-left: 1px solid #990000;
+            text-align: center;
+        }
+        .main ul li:nth-child(1){
+            border-left: none;
+        }
+        .main ul:nth-child(1) li{
+            height: 40px;
+            background: #cc3366;
+            color:#fff;
+            line-height: 40px;
+        }
+        .main ul li.button{
+            display: flex;
+            justify-content: center;
+        }
+
+        .main .button button{
+            height: 40px;
+            background: #cc3366;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+        .main ul li.button button{
+            width: 40px;
+            line-height: 40px;
+            margin-top: 30px;
+        }
+        .main ul li.button span{
+            width: 40px;
+            line-height: 40px;
+            margin-top: 30px;
+        }
+        .main ul li.button span{
+            height: 38px;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+        .main ul:nth-child(2) li:nth-child(1){ background: url("images/shop1.jpg")no-repeat center/contain;}
+        .main ul:nth-child(3) li:nth-child(1){ background: url("images/shop2.jpg")no-repeat center/contain;}
+        .main ul:nth-child(4) li:nth-child(1){ background: url("images/shop3.jpg")no-repeat center/contain;}
+        .main ul:nth-child(5) li:nth-child(1){ background: url("images/shop4.jpg")no-repeat center/contain;}
+        .main .bottom{
+            background-color: #cc3366;
+        }
+        .main .bottom li{
+            border: none;
+            height: 40px;
+            border-bottom: solid 1px #990000;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+        }
+        .main .bottom span{
+            color: gold;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <ul>
+        <li>商品</li>
+        <li>单价</li>
+        <li>数量</li>
+        <li>小计</li>
+    </ul>
+    <ul>
+        <li></li>
+        <li class="price">10</li>
+        <li class="button">
+            <button class="reduce">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+        </li>
+        <li class="count">0</li>
+    </ul>
+    <ul>
+        <li></li>
+        <li class="price">20</li>
+        <li class="button">
+            <button class="reduce">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+        </li>
+        <li class="count">0</li>
+    </ul>
+    <ul>
+        <li></li>
+        <li class="price">30</li>
+        <li class="button">
+            <button class="reduce">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+        </li>
+        <li class="count">0</li>
+    </ul>
+    <ul>
+        <li></li>
+        <li class="price">40</li>
+        <li class="button">
+            <button class="reduce">-</button>
+            <span>0</span>
+            <button class="add">+</button>
+        </li>
+        <li class="count">0</li>
+    </ul>
+    <ul class="bottom">
+        <li></li>
+        <li></li>
+        <li>已选中商品 <span class="select">0</span> 个</li>
+        <li>合计费用￥ <span class="total">0</span></li>
+    </ul>
+</div>
+<script>
+    var aAdd = document.querySelectorAll(".button .add");//获取加
+    var aReduce = document.querySelectorAll(".button .reduce");//获取减
+    var length = aReduce.length;    //得到商品长度
+    var aSpan = document.querySelectorAll(".button span");
+    var number = [];    //定义一个数组    把我们的对应商品的数量存储在数组里面
+    var aPrice = document.querySelectorAll(".price");   //获取单价
+    var aCount = document.querySelectorAll(".count");   //获取小计
+
+    var oSelect = document.querySelector(".select");   //获取选中商品数目
+    var oTotal = document.querySelector(".total");   //获取总价
+    
+    for(var i = 0; i < length; i++) {
+        number[i] = 0;
+    }
+    for(var i = 0; i < length; i++){
+        aAdd[i].index = i;
+        aAdd[i].onclick = function () {
+           var num = parseInt(aSpan[this.index].innerText);
+           num++;
+           aSpan[this.index].innerText = ""+num;
+           number[this.index] = num;
+            change();
+        }
+    }
+    for(var i = 0; i < length; i++){
+        aReduce[i].index = i;
+        aReduce[i].onclick = function () {
+            var num = parseInt(aSpan[this.index].innerHTML);
+            if(num == 0){
+                aSpan[this.index].innerText = "0";
+            }
+            if(num >= 1){
+                num--;
+                aSpan[this.index].innerText = ""+num;
+                number[this.index] = num;
+            }
+            change();
+        }
+    }
+
+    function sum() {
+        var sum = 0;
+        for(var i = 0; i < number.length; i++){
+            sum += number[i];
+        }
+        return sum;
+    }
+
+    function sumPrice() {
+        var sum = 0;
+        for(var i = 0; i < number.length; i++){
+            sum += parseInt(aCount[i].innerText);
+        }
+        return sum;
+    }
+
+    function change() {
+        for(var i = 0; i < length; i++){
+            aCount[i].innerText = number[i]*parseInt(aPrice[i].innerText);
+        }
+        oSelect.innerText = sum();
+        oTotal.innerText = sumPrice();
+    }
+</script>
+</body>
+</html>

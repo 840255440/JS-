@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id='test'>这是一段测试文字！</p>
+<div id="box">
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<script>
+    var oTest = document.getElementById('test');
+    oTest.style.color = 'red';
+    oTest.id = 'testt';
+    oTest.style.color = '#cc00ff';
+    console.log(oTest.id);
+    var oTest2 = document.getElementById('test');
+    console.log(oTest2.id);
+    var oBox =document.querySelector("#box");
+    var aP = document.querySelectorAll("#box p");
+    console.log(aP.length);                //3
+    oBox.innerHTML += "<p>大家好！</p>";
+    console.log(aP.length);
+
+</script>
+</body>
+</html>

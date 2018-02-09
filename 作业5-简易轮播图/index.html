@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            position: relative;
+            box-shadow: 0 0  5px 0 black;
+            margin: 100px auto;
+            width: 800px;
+            height: 450px;
+        }
+        .box .list-radio{
+            list-style-type: none;
+            position: absolute;
+            bottom: 10px;
+            left: 35%;
+        }
+        .box .list-radio li{
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            background-color: coral;
+            font-size: 20px;
+            color: white;
+            line-height: 25px;
+            text-align: center;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .box .radio p{
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            top: calc(50% - 38px);
+            position: absolute;
+            background-color: black;
+        }
+        .box .btn p:nth-child(1){
+            left: 0;
+            background: url("img/btnL.png");
+        }
+        .box .btn p:nth-child(2){
+            right: 0;
+            background: url("img/btnR.png");
+        }
+        .box .pic ul{
+            list-style-type: none;
+            overflow:hidden;
+        }
+        .box .btn p:hover{
+            opacity: 0.5;
+        }
+        .box .pic ul li{
+            width: 800px;
+            height: 450px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: 1s;
+        }
+        .box .radio .on{
+            opacity: 1;
+        }
+        .box .list-radio .active{
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="radio">
+            <div class="pic ">
+                <ul>
+                    <li class="on"><a href=""><img src="img/0.jpg" alt=""></a></li>
+                    <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+                    <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+                    <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+                    <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="btn">
+                <p></p>
+                <p></p>
+            </div>
+            <ul class="list-radio">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var aImgli = document.querySelectorAll(".box .pic li");
+        var aRadio = document.querySelectorAll(".box .list-radio li");
+        var aBtn = document.querySelectorAll(".box .btn p");
+        var nowIndex = 0;
+        for(var i = 0; i < aRadio.length; i++){
+            aRadio[i].index = i;
+            aRadio[i].onclick = function () {
+                console.log(this.index);
+                changeImg(this.index);
+            }
+        }
+
+        for(var i = 0; i < aBtn.length; i++){
+            aBtn[0].onclick = function () {
+                changeImg(nowIndex-1);
+                console.log(nowIndex);
+            }
+            aBtn[1].onclick = function () {
+                changeImg(nowIndex+1);
+                console.log(nowIndex);
+            }
+        }
+
+        function changeImg(index) {
+            if(index == 5){
+                index = 0;
+            }
+            if(index == -1){
+                index = 4;
+            }
+            for(var i = 0; i < aRadio.length; i++){
+                aRadio[i].classList.remove("active");
+                aImgli[i].classList.remove("on");
+            }
+            console.log("index"+index);
+            aRadio[index].classList.add("active");
+            aImgli[index].classList.add("on");
+            nowIndex = index;
+        }
+    </script>
+</body>
+</html>
