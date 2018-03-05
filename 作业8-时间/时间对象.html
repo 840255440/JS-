@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .time{
+            margin-top: 100px;
+            font-size: larger;
+        }
+        .today{
+            margin-top: 300px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="time"><img src="" alt=""></div>
+    <div class="today"></div>
+    <script>
+
+        function addhtml(oString) {
+            var timer = oString.toString().split("");
+            var interhtml = "";
+            for (var i = 0; i < timer.length; i++) {
+                interhtml += "<img src='img/" + timer[i] + ".GIF'>";
+            }
+            return interhtml;
+        }
+        function changeTime() {
+            var oTimer = document.getElementsByClassName("time")[0];
+            var date = "";
+            var data = new Date();
+
+            var year = data.getFullYear();  //获取年，返回数字
+            date += addhtml(year) + "年";
+            console.log(year);
+            var month = data.getMonth() + 1;  //获取月，返回数字 注意：是从0开始的
+            date += addhtml(month) + "月";
+            var day = data.getDate();  //获取日，返回数字
+            date += addhtml(day) + "日 ";
+            var week = data.getDay();  //获取星期，返回数字 注意：星期日 0
+            date += "星期" +addhtml(year)+" ";
+            var hours = data.getHours();  //获取时，返回数字
+            date += addhtml(hours) + ":";
+            var minutes = data.getMinutes();  //获取分，返回数字
+            date += addhtml(minutes) + ":";
+            var seconds = data.getSeconds();  //获取秒，返回数字
+            date += addhtml(seconds);
+            oTimer.innerHTML = date;
+            return date;
+        }
+        setInterval(function () {
+            changeTime()
+        },1000);
+
+        function time() {
+
+            var oTaday = document.getElementsByClassName("today")[0];
+            var data = new Date();  //初始时间
+            var target = new Date(2018,2,25);
+
+            var value = target - data;  //现在到元宵节间隔的时间（毫秒）
+            //console.log(value);
+            var hours = Math.floor(value/1000/60/60) % 24;  //时
+            var minutes = Math.floor(value/1000/60) % 60;  //分
+            var seconds = Math.floor(value/1000) % 60;  //秒  70%60 = 10
+
+            oTaday.innerHTML = "距离今天结束倒计时："+change(hours)+"时"+change(minutes)+"分"+change(seconds)+"秒";
+        }
+        function change(num) {
+            return num < 10 ?  "0" + num :  num;  //最终是返回一个值
+        }
+
+        setInterval(function () {
+            time()
+        },1000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Author" content="网页作者" />
+    <meta name="Copyright" content="网站版权" />
+    <meta name="keywords" content="网站关键字" />
+    <meta name="description" content="网站描述" />
+    <title>无缝滚动</title>
+    <style>
+        body,dl,dd,dt,p,h1,h2,h3,h4,h5,h6{ margin: 0;}
+        ul,ol{margin: 0; list-style: none; padding: 0;}
+        a{ text-decoration: none; color:inherit; }
+        *{ margin: 0; padding: 0; }
+        a img{ display:block; border:none;}
+        .clearfix:after{ content:""; display: block; clear: both;}
+        .fl-l{ float: left;}
+        .fl-r{ float: right;}
+        .wrap,.banner{
+            position: relative;
+            width: 800px;
+            height: 450px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .banner .pic ul{
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            width: 500%;
+            height: 450px;
+
+        }
+        .banner .btn p{
+            position: absolute;
+            top: calc(50% - 27px);
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+        }
+        .banner .btn p:hover{
+            opacity: .6;
+        }
+        .banner .btn p:nth-child(1){
+            left:10px;
+            background: url("images/banner/btnL.png");
+        }
+        .banner .btn p:nth-child(2){
+            right:10px;
+            background: url("images/banner/btnr.png");
+        }
+
+        .banner .dot ol{
+            position: absolute;
+            bottom: 10px;
+            left: calc(50% - 100px);
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            height: 30px;
+        }
+        .banner .dot ol li{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ccc;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+            box-shadow: 0 0 10px 0 #000;
+            cursor: pointer;
+        }
+        .banner .dot ol li.on{
+            background: orangered;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="banner">
+        <div class="pic">
+            <ul>
+                <li><a href="#"><img src="images/banner/picture/0.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/banner/picture/1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/banner/picture/2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/banner/picture/3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="images/banner/picture/4.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <p></p>
+            <p></p>
+        </div>
+        <div class="dot">
+            <ol>
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<script src="animate.0.1.4.js"></script>
+<script>
+    var aBtn = document.querySelectorAll(".btn p");
+    var oUl = document.querySelector(".pic ul");
+    var aLi = document.querySelectorAll(".pic ul li");
+    var aDot = document.querySelectorAll(".dot ol li");
+    var length = aLi.length;
+    var width = parseFloat(getStyle(aLi[0],"width"));
+
+    oUl.appendChild(aLi[0].cloneNode(true));
+
+    var timer;
+
+    timer = setInterval(function () {
+        index++;
+        animate(oUl,{"left":-width*index},500,function () {
+            if(index === length){
+                index = 0;
+                oUl.style.left = 0;
+            }
+            change(index);
+        });
+    },1000);
+
+    oUl.onmouseenter = function (){
+        clearInterval(timer);
+    };
+    oUl.onmouseleave = function (){
+        timer = setInterval(banner,2000);
+    };
+
+
+    var index = 0;
+
+    aBtn[0].onclick = function () {
+        index--;
+        if(index < 0){
+            oUl.style.left = -length*width +"px";
+            index = length - 1;
+        }
+        animate(oUl,{"left":-width*index},500);
+        change(index);
+    };
+
+
+    aBtn[1].onclick = function () {
+        index++;
+        animate(oUl,{"left":-width*index},500,function () {
+            if(index === length){
+                index = 0;
+                oUl.style.left = 0;
+            }
+            change(index);
+        });
+    };
+
+    //按钮添加时间
+    for(var i = 0; i < aDot.length; i++){
+        (function (j) {
+            aDot[j].onclick = function () {
+                index = j;
+                animate(oUl,{"left":-index*width},1000);
+                change(index);
+            }
+        })(i);
+    }
+    function getStyle(obj,property) {
+        return obj.currentStyle ? obj.currentStyle[property] : getComputedStyle(obj)[property];
+    }
+
+    function change(idx){
+        for( var i=0; i<length; i++ ){
+            aDot[i].classList.remove("on");
+        }
+        aDot[idx].classList.add("on");
+    }
+</script>
+</body>
+</html>
