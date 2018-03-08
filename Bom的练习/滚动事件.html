@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function scroll(callback) {
+        window.navigator.userAgent.indexOf("MSIE") > -1 ? document.documentElement.onscroll = callback : document.body.onscroll = callback;
+    }
+    scroll(function () {
+           console.log(document.documentElement.scrollTop);
+    });
+</script>
+</body>
+</html>

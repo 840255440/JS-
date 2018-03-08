@@ -109,6 +109,7 @@
 <script>
     var aBtn = document.querySelectorAll(".btn p");
     var oUl = document.querySelector(".pic ul");
+    var oBanner = document.querySelector(".banner");
     var aLi = document.querySelectorAll(".pic ul li");
     var aDot = document.querySelectorAll(".dot ol li");
     var length = aLi.length;
@@ -116,51 +117,46 @@
 
     oUl.appendChild(aLi[0].cloneNode(true));
 
-    var timer;
+    var timer = setInterval(banner,1000);
 
-    timer = setInterval(function () {
-        index++;
-        animate(oUl,{"left":-width*index},500,function () {
-            if(index === length){
-                index = 0;
-                oUl.style.left = 0;
-            }
-            change(index);
-        });
-    },1000);
-
-    oUl.onmouseenter = function (){
+    oBanner.onmouseenter = function (){
+        console.log(1);
         clearInterval(timer);
     };
-    oUl.onmouseleave = function (){
-        timer = setInterval(banner,2000);
+    oBanner.onmouseleave = function (){
+       timer = setInterval(banner,1000);
     };
 
 
     var index = 0;
 
     aBtn[0].onclick = function () {
+        if(oUl.isanimate) return;
         index--;
         if(index < 0){
             oUl.style.left = -length*width +"px";
             index = length - 1;
         }
-        animate(oUl,{"left":-width*index},500);
+        animate(oUl,{"left":-width*index},1000);
         change(index);
     };
 
 
     aBtn[1].onclick = function () {
+      banner();
+    };
+
+    function banner(){
+        if(oUl.isanimate) return;
         index++;
-        animate(oUl,{"left":-width*index},500,function () {
+        animate(oUl,{"left": -width*index},1000,function () {
             if(index === length){
                 index = 0;
                 oUl.style.left = 0;
             }
             change(index);
         });
-    };
-
+    }
     //按钮添加时间
     for(var i = 0; i < aDot.length; i++){
         (function (j) {

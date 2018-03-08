@@ -29,6 +29,8 @@ function animate(obj,myJSON,time,TweenString,callBack) {
         }
     }
 
+    obj.isanimate = true;
+
     var startJSON = {}; /*存所有属性开始的值*/  //起始位置
     var targetJSON = {}; /*存所有属性目标值*/
     var maxCount = time/20;  //执行的最大次数  总帧数
@@ -69,6 +71,7 @@ function animate(obj,myJSON,time,TweenString,callBack) {
             //     callBack();
             // }
             clearInterval(timer);
+            obj.isanimate = false;
         }
     },20);
 

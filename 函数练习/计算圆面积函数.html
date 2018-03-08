@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function area_of_circle(r, pi) {
+        if(arguments.length == 0){
+            return 0;
+        }
+        else if(arguments.length == 1){
+            return r*r*3.14;
+        }
+        else {
+            return r*r*pi;
+        }
+    }
+    if (area_of_circle(2) === 12.56 && area_of_circle(2, 3.1416) === 12.5664) {
+        console.log('测试通过');
+    } else {
+        console.log('测试失败');
+    }
+</script>
+</body>
+</html>
