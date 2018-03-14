@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1{
+            width: 150px;
+            height: 150px;
+            background-color: #ff66;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+        .box3{
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+
+        .box11{
+            width: 150px;
+            height: 150px;
+            background-color: #ff6600;
+        }
+        .box22{
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+        }
+        .box33{
+            width: 50px;
+            height: 50px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+</div>
+
+<div class="box11">
+    <div class="box22">
+        <div class="box33"></div>
+    </div>
+</div>
+<script>
+    obox1 = document.querySelector(".box1");
+    obox11 = document.querySelector(".box11");
+    obox2 = document.querySelector(".box2");
+    obox22 = document.querySelector(".box22");
+    obox3 = document.querySelector(".box3");
+    obox33 = document.querySelector(".bx33");
+
+    obox3.onclick = function (ev) {
+        ev = ev || window.event;
+        ev.cancelBubble = true;
+        alert(this.className);
+    }
+    obox2.onclick = function (ev) {
+        ev = ev || window.event;
+        ev.cancelBubble = true;
+        alert(this.className);
+    }
+    obox1.onclick = function (ev) {
+        ev = ev || window.event;
+        ev.cancelBubble = true;
+        alert(this.className);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    function addEvent(obj,eName,eFn) {
+        if(obj.arr){
+            obj.arr.push(eFn);
+        }else{
+            obj.arr = [eFn];
+        }
+        obj.addEventListener ? obj.addEventListener(eName,eFn) : obj.attachEvent("on"+eName , eFn);
+    }
+
+    function removeEvent(obj,eName,eFn) {
+        if(eFn){
+            for(var i =0; i < obj.arr.length; i++){
+                if(eFn +"" === obj.arr[i] + ""){
+                    obj.removeEventListener ? obj.removeEventListener(eName,obj.arr[i]) : obj.detachEvent("on"+eName,obj.arr[i]);
+                }
+            }
+        }else{
+            for(var i =0; i < obj.arr.length; i++) {
+                obj.removeEventListener ? obj.removeEventListener(eName,obj.arr[i]) : obj.detachEvent("on"+eName,obj.arr[i]);
+            }
+        }
+    }
+    var obox = document.querySelector(".box");
+    addEvent(obox,"click",function () {
+        alert("you touch me");
+    })
+    addEvent(obox,"click",function () {
+        alert("you touch me2");
+    })
+    function f1() {
+        alert("you touch me3");
+    }
+    addEvent(obox,"click",f1);
+//    removeEvent(obox,"click");
+    removeEvent(obox,"click",f1);
+</script>
+</body>
+</html>

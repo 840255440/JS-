@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    function addEvent(obj,eName,eFn) {
+        obj.addEventListener ? obj.addEventListener(eName,eFn) : obj.attachEvent("on"+eName,eFn);
+    }
+
+    var obox = document.querySelector(".box");
+    addEvent(obox,"click",function () {
+        alert("you touch me");
+    })
+</script>
+</body>
+</html>

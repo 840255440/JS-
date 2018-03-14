@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name) {
+        this.name = name;
+        this.hello = function () {
+            alert("hello  "+this.name+"!");
+        }
+    }
+
+    var xiaohong = new Student("小红");
+    xiaohong.hello();
+</script>
+</body>
+</html>

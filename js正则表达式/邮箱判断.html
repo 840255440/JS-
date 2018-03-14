@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var re1 =  /^([0-9a-zA-Z]+)@([0-9a-zA-Z]{1,3})\.com$/;
+    console.log(re1.test("840255440@qq.com"));
+    var re2 = new RegExp('^([0-9a-zA-Z]+)@([0-9a-zA-Z]{1,3})\\.com$');
+    console.log(re2.test("840255440@qqcom"));
+
+    var re1 = /^<(\w+\s+\w+)>\s+(\w+@\w+\.\w+)$/;
+    var r = re1.exec('<Tom Paris> tom@voyager.org');
+    if (r === null || r.toString() !== ['<Tom Paris> tom@voyager.org', 'Tom Paris', 'tom@voyager.org'].toString()) {
+        console.log('测试失败!');
+    }
+    else {
+        console.log('测试成功!');
+    }
+
+    var re =  /^[0-9a-zA-Z\.]+\@[0-9a-zA-Z]+\.\w+$/;
+    var i,
+        success = true,
+        should_pass = ['someone@gmail.com', 'bill.gates@microsoft.com', 'tom@voyager.org', 'bob2015@163.com'],
+        should_fail = ['test#gmail.com', 'bill@microsoft', 'bill%gates@ms.com', '@voyager.org'];
+    for (i = 0; i < should_pass.length; i++) {
+        if (!re.test(should_pass[i])) {
+            console.log('测试失败: ' + should_pass[i]);
+            success = false;
+            break;
+        }
+    }
+    for (i = 0; i < should_fail.length; i++) {
+        if (re.test(should_fail[i])) {
+            console.log('测试失败: ' + should_fail[i]);
+            success = false;
+            break;
+        }
+    }
+    if (success) {
+        console.log('测试通过!');
+    }
+</script>
+</body>
+</html>

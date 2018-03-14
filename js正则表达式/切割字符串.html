@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str1 = "a b c";
+    console.log(str1.split(/\s+/));
+    var str2 = "a, b c";
+    console.log(str2.split(/[\\,\s+]+/))
+    var str3 = "a,; b;,' c";
+    console.log(str3.split(/[\s\,\;\']+/))
+</script>
+</body>
+</html>

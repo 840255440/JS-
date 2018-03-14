@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function MouseWheel(obj,Event) {
+        document.onmousewheel ===null ? obj.onmousewheel = Event : obj.addEventListener("DOMMouseScroll",Event);
+    }
+    var index1 = 0;
+    var index2 = 0;
+    MouseWheel(document,function (e) {
+        var ev = e || window.event;
+        var wheel = ev.wheelDelta/120 || -ev.detail/3;  //向前是正，向后是负
+        if(wheel > 0){
+            index1++;
+            console.log("向前滚了"+index1+"次");
+        }else{
+            index2++;
+            console.log("向后滚了"+index2+"次");
+        }
+    });
+
+</script>
+</body>
+</html>

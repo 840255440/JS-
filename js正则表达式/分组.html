@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "name:alice;age:11;";
+    var re = /^name:(\w+);age:(\d+);$/;
+
+    console.log(re.exec(str));
+
+    //限制贪婪匹配
+    var re = /^(\d+?)(0*)$/;
+    re.exec('102300'); // ['102300', '1023', '00']
+</script>
+</body>
+</html>
