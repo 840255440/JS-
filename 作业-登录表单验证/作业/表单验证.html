@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Author" content="网页作者" />
+    <meta name="Copyright" content="网站版权" />
+    <meta name="keywords" content="网站关键字" />
+    <meta name="description" content="网站描述" />
+    <title>Document</title>
+    <style>
+        body,dl,dd,dt,p,h1,h2,h3,h4,h5,h6{ margin: 0;}
+        ul,ol{margin: 0; list-style: none; padding: 0;}
+        a{ text-decoration: none; color:inherit; }
+        *{ margin: 0; padding: 0; }
+        a img{ display:block; border:none;}
+        .clearfix:after{ content:""; display: block; clear: both;}
+        .fl-l{ float: left;}
+        .fl-r{ float: right;}
+        .wrap{
+            width: 400px;
+            height: 500px;
+            margin:  100px auto;
+            background: skyblue;
+            box-shadow: 0 0 10px 0 #000;
+        }
+        .wrap h2{
+            padding: 10px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            color:#fff;
+        }
+        .box{
+            width: 250px;
+            margin: auto;
+        }
+        .box li{
+            height: 37px;
+            margin: 15px auto;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .box li input{
+            width: 248px;
+            height: 35px;
+            outline: none;
+            text-indent: 10px;
+        }
+        .box li input.right{
+            border: 1px solid green;
+        }
+        .box li input.wrong{
+            border: 1px solid red;
+        }
+        .box li p{
+            padding: 5px 0;
+            font-size: 14px;
+            color: red;
+        }
+        .btn{
+            width: 150px;
+            height: 40px;
+            margin: auto;
+            background: gold;
+            color: #fff;
+            font: bold 20px/40px '';
+            text-align: center;
+            cursor: pointer;
+        }
+        </style>
+</head>
+    <!--===========================-->
+    <!-------监督热线：400-1567-315---->
+    <!--===========================-->
+<body>
+    <div class="wrap">
+        <h2>登录</h2>
+        <ul class="box">
+            <li>
+                <input type="text" placeholder="请输入用户名" name="user">
+                <p>字母开头,长度5-10位字母数字下划线</p>
+            </li>
+            <li>
+                <input type="password" placeholder="请输入密码" name="pwd">
+                <p>字母数字长度6-18位</p>
+            </li>
+            <li>
+                <input type="password" placeholder="请再次输入密码" name="pwd2">
+                <p>两次密码不一致</p>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入电话" name="tel">
+                <p>电话号码格式不正确</p>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入e-mail" name="mail">
+                <p>邮箱格式不正确</p>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入身份证" name="card">
+                <p>请输入身份证</p>
+            </li>
+        </ul>
+        <p class="btn">提交</p>
+    </div>
+<script>
+    var reg = {
+        user : /^[a-zA-Z_]\w{5,17}$/,
+        pwd : /^[1-9a-zA-Z_]\w{5,17}$/,
+        tel : /^1[3-8]\d{9}$/,
+        mail : /^[1-9]\d{4,9}@qq.com$/,
+        card : /^[1-9][0-9xX]{17}$/
+    };
+    var aLi = document.querySelectorAll('li');
+    var arrObj = [];
+    for( var i=0; i<aLi.length; i++ ){
+        arrObj[i] = document.querySelectorAll('input')[i];
+    }
+
+    /*给每一个表单添加失去焦点事件*/
+    for( var i=0; i<aLi.length; i++ ){
+        if(i === 2)continue;
+        arrObj[i].onblur = function () {
+            if(this.value && reg[this.name].test(this.value)){
+                this.parentNode.style.height = '37px';
+                this.className = 'right';
+            }else{
+                this.focus(); //当错误的时候将焦点返回给自己
+                this.parentNode.style.height = '62px';
+                this.className = 'wrong';
+            }
+        }
+    }
+    /*再次输入密码的时候*/
+    arrObj[2].onblur = function () {
+        if(this.value === arrObj[1].value){
+            this.parentNode.style.height = '37px';
+            this.className = 'right';
+        }else{
+            arrObj[1].focus(); //当匹配错误的时候将焦点给第一次输密码的input框
+            this.parentNode.style.height = '62px';
+            this.className = 'wrong';
+        }
+    }
+</script>
+</body>
+</html>

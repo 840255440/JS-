@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            position: relative;
+            width: 1000px;
+            height: 800px;
+            border-radius: 10px;
+
+            box-shadow: 0 0 10px 0 #999999;
+            margin: 100px auto;
+        }
+        .box p{
+            width: 100px;
+            height: 100px;
+            background-color: #ff6600;
+            margin: 10px;
+            box-shadow: 0 0 10px 0 #000;
+            float: left;
+        }
+        .box button{
+            position: absolute;
+            background-color: #999999;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 10px;
+            bottom: 10px;
+            right: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <p></p>
+    <p></p>
+    <p></p>
+    <button>添加</button>
+</div>
+<script>
+    oBox = document.querySelector(".box");
+    var oBtn = document.querySelector("button");
+    oP = document.querySelectorAll(".box p");
+    
+    for(var i = 0; i < oP.length; i++){
+        oP[i].onclick = function () {
+            this.style.background = "green";
+        }
+    }
+    oBtn.onclick = function () {
+        var p = document.createElement("p");
+        console.log(p);
+        p.onclick = function () {
+            this.style.background = "green";
+        };
+        oBox.appendChild(p);
+    }
+
+
+</script>
+</body>
+</html>

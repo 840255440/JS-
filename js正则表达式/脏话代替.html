@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = window.prompt("enter");
+
+    var reg = /傻逼|操|狗比/g;
+    var strt = str.replace(reg,function (ss) {
+        var s = "";
+        for(var i=0; i<ss.length; i++){
+            s += "*";
+        }
+        return s;
+    });
+
+    alert(strt);
+</script>
+</body>
+</html>

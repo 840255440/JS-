@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/;
+    var str = "aadas2112";
+    console.log(reg.test(str));
+
+    var reg2 = /a/g;
+    var str2 = "haappyhappy";
+    console.log(str2.match(reg2));
+
+    var reg3 =/ap/gi;
+    var str3 = "hAppyappalehappy";
+    console.log(str3.match(reg3));
+
+    var reg4 =/ap/img;
+    var str4 = "hAppyappalehappy";
+    console.log(str4.match(reg4));
+</script>
+</body>
+</html>

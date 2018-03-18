@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "324awd68794";
+    var reg = /\d/g;
+    var arrnum = str.match(reg);
+
+    console.log(arrnum);
+    for(var i=0; i<arrnum.length; i++){
+        arrnum[i] = parseInt(arrnum[i]);
+    }
+
+    arrnum.sort(function (a,b) {
+        if(a > b){
+            return -1;
+        }else {
+            return 1;
+        }
+    })
+    console.log(arrnum);
+</script>
+</body>
+</html>

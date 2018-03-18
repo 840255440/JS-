@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name) {
+        this.name = name;
+    }
+
+    Student.prototype.hello = function () {
+        alert("hello,"+this.name);
+    }
+
+    var xiaoming = new Student("小明");
+    xiaoming.hello();
+</script>
+</body>
+</html>
