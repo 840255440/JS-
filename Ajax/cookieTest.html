@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var date = new Date().getTime() + 120000;
+    console.log(date);
+    document.cookie = "password = 123;expires =" + new Date(date); //设置到期时间
+    alert(document.cookie[1]);
+</script>
+</body>
+</html>

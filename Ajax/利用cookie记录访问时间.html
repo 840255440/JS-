@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="lastTime"></div>
+<div id="nowTime"></div>
+<script>
+    var lT = document.querySelector("#lastTime");
+    var nT = document.querySelector("#nowTime");
+     var lasttime = document.cookie.match(/.+lastTime=(.+)/);//子集匹配的字符会添加到匹配成功数组的后面
+
+
+     console.log(lasttime);
+     lT.innerText = lasttime ? "上一次访问时间："+lasttime[1] : "欢迎第一次访问";
+
+     var data = new Date();
+     y = data.getFullYear(),
+     m = data.getMonth() + 1,
+     d = data.getDate(),
+     h = data.getHours(),
+     mm = data.getMinutes(),
+     s = data.getSeconds();
+
+     console.log(document.cookie);
+    document.cookie = "lastTime = " +y+ "-" +m+ "-" +d+ " " +h+ ":" +mm+ ":" +s;
+    console.log(document.cookie);
+    nT.innerHTML = "当前时间是：" +y+ "-" +m+ "-" +d+ " " +h+ ":" +mm+ ":" +s;
+</script>
+
+
+<!--<div id="lasttime"></div>-->
+<!--<div id="nowtime"></div>-->
+<!--<script>-->
+    <!--var oLast = document.querySelector("#lasttime");-->
+    <!--var oNow = document.querySelector("#nowtime");-->
+
+    <!--console.log(document.cookie);-->
+    <!--var lasttime = document.cookie.match(/.+lastTime=(.+)/);//子集匹配的字符会添加到匹配成功数组的后面-->
+
+
+    <!--console.log(lasttime);-->
+    <!--oLast.innerText = lasttime ? "上一次访问时间："+lasttime[1] : "欢迎第一次访问";-->
+
+    <!--var data = new Date();-->
+    <!--YY = data.getFullYear(),-->
+    <!--MM = data.getMonth() + 1,-->
+    <!--DD = data.getDate(),-->
+    <!--hh = data.getHours(),-->
+    <!--mm = data.getMinutes(),-->
+    <!--ss = data.getSeconds();-->
+
+    <!--document.cookie = "lasttime="+YY+ "-" +MM+ "-" +DD+ " " +hh+ ":" +mm+ ":" +ss;-->
+    <!--console.log(document.cookie);-->
+    <!--oNow.innerText = "本次访问时间" + +YY+ "-" +MM+ "-" +DD+ " " +hh+ ":" +mm+ ":" +ss;-->
+
+<!--</script>-->
+</body>
+</html>

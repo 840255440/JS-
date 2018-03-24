@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box p{
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 10px 0 #ff6600;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(".box p ").css("background","pink");
+    $(".box p")[1].style.backgroundColor = "black";
+    $(".box p")[1].style.cssText = "background:blue";
+    $(".box p:first").css("background","yellow");
+    $(".box p").eq(3).css("background","deeppink");
+    $(".box p:eq(3)").css("background","black");
+
+    var a = 3;
+    $("p").eq(a).animate({"width":400},500);
+
+
+</script>
+</body>
+</html>
