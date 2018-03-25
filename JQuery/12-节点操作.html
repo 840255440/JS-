@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            position: absolute;
+            left: 0;
+        }
+        #box1 p{
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 5px 0 #ff6600;
+        }
+    </style>
+</head>
+<div id="box1">
+    <p></p>
+    <p class="ppp"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    console.log($("#box1").children("p").length);
+    console.log($("#box1").children(":odd").length);
+    console.log($("#box1").children(":even").length);
+    console.log($("#box1").find(".ppp").css("background","#ff6600"));
+    $(".ppp").parent().css("border","solid 2px");
+</script>
+</body>
+</html>

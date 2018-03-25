@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .shutter{
+            position: relative;
+            margin: 100px auto;
+            width: 1000px;
+            height: 500px;
+            box-shadow: 0 0 10px 0 #ff6600;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            left: 0;
+        }
+        .shutter ul li{
+            position: absolute;
+            overflow: hidden;
+        }
+        .shutter li img{
+            width: 750px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shutter">
+        <ul>
+            <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+        </ul>
+    </div>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/shutter.js"></script>
+</html>

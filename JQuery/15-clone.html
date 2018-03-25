@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $("ul").append( $("ul li").eq(0).clone());
+    $("ul li").eq(1).clone().appendTo($("ul"));
+</script>
+</body>
+</html>

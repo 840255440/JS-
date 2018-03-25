@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            position: absolute;
+            left: 0;
+        }
+        #box1 p{
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 5px 0 #ff6600;
+            background-color: #cccccc;
+        }
+        #box1 p.on{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <p></p>
+    <p class="on"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $("#box1 p").click(function () {
+        console.log($(this).index());
+        $(this).addClass("on").siblings().removeClass("on");  //自己添加类名on,兄弟元素节点删除类名on
+    });
+    var $p = $("<p></p>");
+    $p.css("background","yellow")
+    $("#box1").append($p);
+    $("<p>222</p>").appendTo($("#box1"));
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div id="box">
+    <p>哈哈</p>
+    <p>嘻嘻</p>
+</div>
+<button>点击</button>
+<body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $("#box p").eq(1).after("<p>滚</p>")
+    $("#box p").eq(0).before("<p>滚开</p>")
+    $("<p>111</p>").insertBefore($("#box p").eq(0));
+    $("<p>222</p>").insertAfter($("#box p").eq(4));
+    $("#box p").wrap("<a></a>");
+    $("button").click(function () {
+        $("#box p").eq(2).appendTo("#box");
+    })
+</script>
+</body>
+</html>

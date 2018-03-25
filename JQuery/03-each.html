@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            position: absolute;
+            left: 0;
+        }
+        #box1 p{
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 5px 0 #ff6600;
+        }
+        #box2{
+            position: absolute;
+            right: 0;
+        }
+
+
+    </style>
+</head>
+<div id="box1">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div id="box2">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+//    $("#box1 p").each(function (i) {
+//        $(this).click(function () {
+//            alert(i);
+//        })
+//    })
+//
+//    $("#box1 p").each(function (i) {
+//        $(this).animate({width:(i+2)*100},1000,function () {
+//            $(this).css("background","pink");
+//        })
+//    })
+$("#box1 p").each(function (i) {
+    $(this).mouseenter(function () {
+        $(this).animate({width:(i+2)*100},1000,function () {
+            $(this).css(background,"pink");
+    })
+    })
+})
+    $("#box2 p").css(
+        {
+    width: 100,
+    height: 100,
+            "box-shadow": "0 0 5px 0 #990000"
+});
+
+</script>
+</body>
+</html>

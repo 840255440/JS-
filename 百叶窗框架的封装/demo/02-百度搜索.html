@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        ul, ol { list-style: none;}
+        a {border: none;text-decoration: none;color: inherit;}
+        * {margin: 0;padding: 0;}
+        html{
+            height: 100%;
+        }
+        body{
+            text-align: center;
+            background: url("images/3.jpg") no-repeat center/cover;
+        }
+        .wrap{
+            margin-top: 100px;
+        }
+        .wrap input{
+            width: 600px;
+            height: 30px;
+            outline: none;
+            text-indent: 10px;
+        }
+        .wrap button{
+            width: 100px;
+            height: 34px;
+            outline: none;
+        }
+        .form{
+            position: relative;
+            display: flex;
+            width: 700px;
+            margin: auto;
+        }
+        .form ul{
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 100%;
+            text-align: left;
+            text-indent: 10px;
+            border: 1px solid #ccc;
+        }
+        .form ul li{
+            padding: 2px 0;
+        }
+        .form ul li.active{
+            background: rgba(204,204,204,0.8);
+            color: #fff;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="wrap">
+    <img src="images/baidu.png" alt="" width="300">
+    <div class="form">
+        <input type="text">
+        <button>百度一下</button>
+        <ul>
+            <!--<li class="active">下个路口</li>-->
+            <!--<li>展望未来</li>-->
+            <!--<li>wonderful</li>-->
+        </ul>
+    </div>
+
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/baidu.js"></script>
+</body>
+</html>
